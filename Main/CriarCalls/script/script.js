@@ -1,37 +1,41 @@
 const SubmitButton = document.getElementById("SubmitButton");
-const API_URL = "http://localhost:3000"
+const API_URL = "http://192.168.15.111:3000";
 
-async function enviarCall(Tipo, Mensagem, Usuario) {
+async function enviarCall(Tipo, ObsInput, Mensagem, Usuario) {
     try {
-        const resposta = await fetch("http://localhost:3000/CriarCall", {
+        const resposta = await fetch(`${API_URL}/CriarCall`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 Tipo,
+                ObsInput,
                 Mensagem,
                 Usuario
             })
         });
 
-        if (!response) {
-            throw new Error('Erro ao enviar o chamado')
+        if (!resposta.ok) {
+            throw new Error("Erro ao enviar o chamado");
         }
-        const resultado = await resposta.json()
-        
-        return resultado
+
+        return await resposta.json();
+
     } catch (error) {
-        console.log(`[Error]: ${error}`)
+        console.error(error);
     }
 }
 
-SubmitButton.addEventListener("click", async function() {
-    const CallForm = document.getElementById("CallForm");
-    
-    const formData = new FormData(CallForm);
+SubmitButton.addEventListener("click", async () => {
+    const formData = new FormData(document.getElementById("CallForm"));
 
-    const data = await enviarCall(formData.get("TipoOcorrencia"), formData.get("ObsInput"), /* Trocar para o usuario real */"Samuel Bonfim")
+    const resultado = await enviarCall(
+        formData.get("TipoOcorrencia"),
+        formData.get("ObsInput"),
+        formData.get("Mensagem"),
+        "Samuel Bonfim"
+    );
 
-    console.log(`Tipo: ${formData.get("TipoOcorrencia")}\nMensagem:${formData.get("ObsInput")}`);
-})
+    console.log(resultado);
+});
