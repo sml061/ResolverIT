@@ -1,0 +1,46 @@
+/* Estilo do botão */
+.menu-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Estado inicial da aba (escondida na esquerda) */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px; /* Largura negativa para sumir da tela */
+  width: 250px;
+  height: 100%;
+  background-color: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  transition: left 0.3s ease; /* Animação suave */
+  z-index: 999;
+}
+
+/* Classe que o JavaScript vai adicionar para abrir a aba */
+.sidebar.ativo {
+  left: 0; /* Traz o menu para dentro da tela */
+}
+
+/* Estilos internos da aba */
+.sidebar-content {
+  padding: 60px 20px 20px 20px; /* Espaço para não cobrir o botão */
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
+  margin: 15px 0;
+}
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}

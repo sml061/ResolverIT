@@ -11,11 +11,27 @@ $_SESSION["Usuario"] = "admin";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/styleCallsList.css">
+    <link rel="stylesheet" href="../css/styleSideBar.css">
 </head>
 
 <body>
 
-    <h1 id="Usuario"><?php echo $_SESSION["Usuario"] ?></h1>
+    <!-- Botão no canto superior esquerdo -->
+    <button id="menu-btn" class="menu-btn">&#9776;</button>
+
+    <!-- Aba/Painel lateral que inicia oculta -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+            <h2>Meu Site</h2>
+            <ul>
+                <li><a href="../CriarCalls/">Criar Chamado</a></li>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Configurações</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
     <br>
     <table class="table">
         <thead>
@@ -27,8 +43,13 @@ $_SESSION["Usuario"] = "admin";
         </thead>
         <tbody id="tablesBody">
         </tbody>
+        <span id="ReloadCalls">🔄</span>
     </table>
+    <script type="text/javascript">
+        var myvar='<?php echo $_SESSION['Usuario'];?>';
+    </script>
     <script src="script/script.js"></script>
+    <script src="../../src/SideBar/sidebar.js"></script>
 </body>
 
 </html>

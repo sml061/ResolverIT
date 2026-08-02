@@ -82,3 +82,7 @@ body {
         text-align: center;
     }
 }
+
+#ReloadCalls {
+    cursor: pointer;
+}

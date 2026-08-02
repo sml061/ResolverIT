@@ -1,7 +1,8 @@
 const API_URL = "http://192.168.15.111:3000";
+const ReloadCall = document.getElementById("ReloadCalls");
 
 async function LoadCalls() {
-    const Usuario = document.getElementById("Usuario").innerText;
+    const Usuario = myvar;
     const resposta = await fetch(`${API_URL}/VerCall/once/${Usuario}`);
 
     const dados = await resposta.json();
@@ -47,5 +48,16 @@ async function CarregarTR() {
         listaTabelasElement.append(tr);
     }
 }
+
+async function LimparTR() {
+    const listaTabelasElement = document.getElementById("tablesBody");
+
+    listaTabelasElement.innerHTML = "";
+}
+
+ReloadCall.addEventListener("click", function () {
+    LimparTR();
+    CarregarTR();
+});
 
 CarregarTR();

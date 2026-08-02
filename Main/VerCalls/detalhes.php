@@ -26,6 +26,8 @@ $ID = $_GET['id'];
         <h3 id="Tecnico_Respo">Responsavel</h3>
         <h3 id="Observacao">Observação</h3>
         <p id="Mensagem">Mensagem</p>
+        <br>
+        <a class="btn btn-secundary" href="./">Voltar</a>
     </div>
 
     <script src="script/detalhes.js"></script>
