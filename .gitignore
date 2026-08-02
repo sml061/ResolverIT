@@ -1,0 +1,5 @@
+// Env file
+.env
+
+// Composer Dir
+vendor/

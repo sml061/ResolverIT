@@ -29,13 +29,22 @@ async function enviarCall(Tipo, ObsInput, Mensagem, Usuario) {
 
 SubmitButton.addEventListener("click", async () => {
     const formData = new FormData(document.getElementById("CallForm"));
+    const messageElement = document.getElementById("message")
 
     const resultado = await enviarCall(
         formData.get("TipoOcorrencia"),
         formData.get("ObsInput"),
         formData.get("Mensagem"),
-        "Samuel Bonfim"
+        myvar
     );
 
     console.log(resultado);
+
+    if (resultado.sucesso === true) {
+        console.log("Chamado enviado com sucesso")
+        messageElement.innerHTML = "Chamado enviado com sucesso"
+    } else {
+        console.log("Chamado nao foi enviado")
+        messageElement.innerHTML = "Chamado nao foi enviado"
+    }
 });

@@ -1,3 +1,9 @@
+<?php
+
+require_once(__DIR__ . "/../../scripts/auth.php");
+
+?>
+
 <!doctype html>
 <html lang="pt-BR">
 
@@ -21,7 +27,12 @@
             <ul>
                 <li><a href="../VerCalls/">Ver Chamado</a></li>
                 <li><a href="#">Perfil</a></li>
-                <li><a href="#">Configurações</a></li>
+                <?php
+                if ($_SESSION['is_admin'] == 1) {
+                    echo "<li><a href=''>Admin Panel</a></li>";
+                }
+                ?>
+                <li class="logoutBtn"><a href="../../scripts/logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -29,6 +40,8 @@
     <div class="container">
         <form id="CallForm">
             <h1>Atribuir Chamado</h1>
+
+            <p id="message"></p>
 
             <div class="select-option">
                 <label for="TipoOcorrencia">Tipo</label>
@@ -55,6 +68,9 @@
         </form>
     </div>
 
+    <script type="text/javascript">
+        var myvar='<?php echo $_SESSION['usuario'];?>';
+    </script>
     <script src="script/script.js"></script>
     <script src="../../src/SideBar/sidebar.js"></script>
 </body>

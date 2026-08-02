@@ -1,6 +1,7 @@
 <?php
-session_start();
-$_SESSION["Usuario"] = "admin";
+
+require_once(__DIR__ . "/../../scripts/auth.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +27,12 @@ $_SESSION["Usuario"] = "admin";
             <ul>
                 <li><a href="../CriarCalls/">Criar Chamado</a></li>
                 <li><a href="#">Perfil</a></li>
-                <li><a href="#">Configurações</a></li>
+                <?php
+                if ($_SESSION['is_admin'] == 1) {
+                    echo "<li><a href=''>Admin Panel</a></li>";
+                }
+                ?>
+                <li class="logoutBtn"><a href="../../scripts/logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -46,7 +52,7 @@ $_SESSION["Usuario"] = "admin";
         <span id="ReloadCalls">🔄</span>
     </table>
     <script type="text/javascript">
-        var myvar='<?php echo $_SESSION['Usuario'];?>';
+        var myvar='<?php echo $_SESSION['usuario'];?>';
     </script>
     <script src="script/script.js"></script>
     <script src="../../src/SideBar/sidebar.js"></script>

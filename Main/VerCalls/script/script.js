@@ -36,7 +36,7 @@ async function CarregarTR() {
         tdTipo.textContent = chamado.Tipo;
 
         const tdMensagem = document.createElement("td");
-        tdMensagem.textContent = chamado.Mensagem;
+        tdMensagem.textContent = chamado.Observacao;
 
         const tdDate = document.createElement("td");
         tdDate.textContent = dataFormatadaSemVirgula;

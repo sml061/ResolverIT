@@ -1,0 +1,44 @@
+<?php
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+    session_start();
+
+    require_once("../config/database.php");
+
+    $usuario = $_POST["nome"];
+    $senha = $_POST["senha"];
+
+    $sql = "SELECT * FROM usuarios WHERE usuario = :usuario";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(":usuario", $usuario);
+    $stmt->execute();
+    
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    try {
+        $sql = "UPDATE usuarios SET ultimo_login = CURRENT_TIMESTAMP WHERE usuario = :usuario";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(":usuario", $usuario);
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo "". $e->getMessage();
+        exit();
+    }
+
+    if ($user && password_verify($senha, $user['senha'])) {
+
+        $_SESSION["id"] = $user["id"];
+        $_SESSION["usuario"] = $user["usuario"];
+        $_SESSION["is_admin"] = $user["is_admin"];
+
+        header("Location: ../Main/VerCalls/");
+        exit();
+    }
+
+
+    header("Location: ../login/?error=invalid_credentials");
+    exit();

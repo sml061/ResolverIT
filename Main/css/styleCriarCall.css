@@ -33,6 +33,10 @@ body {
     color: #2563eb;
 }
 
+#message {
+    text-align: center;
+}
+
 .select-option,
 .obs-input,
 .msg-input {
