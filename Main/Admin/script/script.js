@@ -11,6 +11,7 @@ async function LoadCalls() {
 }
 
 async function CarregarTR() {
+    LimparTR();
     const listaTabelasElement = document.getElementById("tablesBody");
 
     const chamados = await LoadCalls();
@@ -56,8 +57,11 @@ async function LimparTR() {
 }
 
 ReloadCall.addEventListener("click", function () {
-    LimparTR();
     CarregarTR();
 });
+
+setTimeout(() => {
+    CarregarTR()
+}, 30000)
 
 CarregarTR();

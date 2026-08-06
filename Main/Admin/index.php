@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . "/../../scripts/auth.php");
+require_once(__DIR__ . "/../../scripts/auth_admin.php");
 
 ?>
 
@@ -10,7 +11,7 @@ require_once(__DIR__ . "/../../scripts/auth.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resolve IT</title>
     <link rel="stylesheet" href="../css/styleCallsList.css">
     <link rel="stylesheet" href="../css/styleSideBar.css">
 </head>
@@ -25,13 +26,8 @@ require_once(__DIR__ . "/../../scripts/auth.php");
         <div class="sidebar-content">
             <h2>Meu Site</h2>
             <ul>
-                <li><a href="../CriarCalls/">Criar Chamado</a></li>
                 <li><a href="#">Perfil</a></li>
-                <?php
-                if ($_SESSION['is_admin'] == 1) {
-                    echo "<li><a href=''>Admin Panel</a></li>";
-                }
-                ?>
+                <li><a href="../CriarCalls/">Criar Chamado</a></li>
                 <li class="logoutBtn"><a href="../../scripts/logout.php">Logout</a></li>
             </ul>
         </div>

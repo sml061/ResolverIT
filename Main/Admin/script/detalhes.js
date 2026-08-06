@@ -6,6 +6,8 @@ const id = urlParams.get("id");
 
 const API_URL = "http://192.168.15.111:3000";
 
+const btnAssumir = getElementById("btn-assumir")
+
 async function LoadCall(id) {
     const resposta = await fetch(`${API_URL}/DetalhesCall/${id}`);
 
