@@ -10,7 +10,7 @@ require_once(__DIR__ . "/../../scripts/auth_admin.php");
 $ID = $_GET['id'];
 $Usuario = $_SESSION['usuario']
 
-?>
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +38,8 @@ $Usuario = $_SESSION['usuario']
     </div>
 
     <script type="text/javascript">
-        var myvar='<?php echo $_SESSION['usuario'];?>';
+        var myvar = '<?php echo $_SESSION['usuario']; ?>';
+        var idcall = '<?php echo $_GET['id'] ?>'
     </script>
     <script src="script/detalhes.js"></script>
 </body>

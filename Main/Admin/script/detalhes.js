@@ -6,7 +6,7 @@ const id = urlParams.get("id");
 
 const API_URL = "http://192.168.15.111:3000";
 
-const btnAssumir = getElementById("btn-assumir")
+const btnAssumir = document.getElementById("btn-assumir")
 
 async function LoadCall(id) {
     const resposta = await fetch(`${API_URL}/DetalhesCall/${id}`);
@@ -15,6 +15,46 @@ async function LoadCall(id) {
 
     return dados[0];
 }
+
+async function VerificarSeChamadoJaEstaAssumido(idChamado) {
+    
+}
+
+async function enviarCall(idChamado, Responsavel) {
+    try {
+        const resposta = await fetch(`${API_URL}/AssumirTecnicoAoChamado`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idChamado, 
+                Responsavel
+            })
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao enviar o chamado");
+        }
+
+        return await resposta.json();
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+btnAssumir.addEventListener("click", async function () {
+    const respostaConfirm = confirm("Deseja continuar?");
+
+    if (respostaConfirm) {
+        const resultado = await enviarCall(idcall, myvar)
+        console.log(resultado)
+    } else {
+        console.log("Chamado nao enviado")
+    }
+
+})
 
 async function MontarData() {
     const Usuario = document.getElementById("Usuario");
