@@ -6,7 +6,7 @@ const id = urlParams.get("id");
 
 const API_URL = "http://192.168.15.111:3000";
 
-const btnAssumir = document.getElementById("btn-assumir")
+const btnAssumir = document.getElementById("btn-assumir");
 
 async function LoadCall(id) {
     const resposta = await fetch(`${API_URL}/DetalhesCall/${id}`);
@@ -17,7 +17,13 @@ async function LoadCall(id) {
 }
 
 async function VerificarSeChamadoJaEstaAssumido(idChamado) {
-    
+    const resposta = await fetch(
+        `${API_URL}/VerificarSeChamadoJaEstaAssumido/${idChamado}`,
+    );
+
+    const dados = await resposta.json();
+
+    return dados.EstaAtribuido;
 }
 
 async function enviarCall(idChamado, Responsavel) {
@@ -25,12 +31,12 @@ async function enviarCall(idChamado, Responsavel) {
         const resposta = await fetch(`${API_URL}/AssumirTecnicoAoChamado`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                idChamado, 
-                Responsavel
-            })
+                idChamado,
+                Responsavel,
+            }),
         });
 
         if (!resposta.ok) {
@@ -38,23 +44,37 @@ async function enviarCall(idChamado, Responsavel) {
         }
 
         return await resposta.json();
-
     } catch (error) {
         console.error(error);
     }
 }
 
 btnAssumir.addEventListener("click", async function () {
+    const ChamadoAtribuido = await VerificarSeChamadoJaEstaAssumido(idcall);
+
+    if (ChamadoAtribuido === true) {
+        const respostaConfirmAtribuido = confirm(
+            "Ja possui um responsavel, deseja assumir?",
+        );
+
+        if (!respostaConfirmAtribuido) {
+            return;
+        }
+    }
+
+    console.log(ChamadoAtribuido);
+
     const respostaConfirm = confirm("Deseja continuar?");
 
     if (respostaConfirm) {
-        const resultado = await enviarCall(idcall, myvar)
-        console.log(resultado)
+        const resultado = await enviarCall(idcall, myvar);
+        console.log(resultado);
     } else {
-        console.log("Chamado nao enviado")
+        console.log("Chamado nao enviado");
     }
 
-})
+    MontarData();
+});
 
 async function MontarData() {
     const Usuario = document.getElementById("Usuario");
