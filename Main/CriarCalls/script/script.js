@@ -1,5 +1,6 @@
+import { API_URL } from "../../../src/Api/Api_Address.js";
+
 const SubmitButton = document.getElementById("SubmitButton");
-const API_URL = "http://192.168.15.111:3000";
 
 async function enviarCall(Tipo, ObsInput, Mensagem, Usuario) {
     try {

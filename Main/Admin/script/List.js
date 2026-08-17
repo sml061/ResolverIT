@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.15.111:3000";
+import { API_URL } from "../../../src/Api/Api_Address.js";
 const ReloadCall = document.getElementById("ReloadCalls");
 
 async function LoadCalls() {

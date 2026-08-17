@@ -70,8 +70,8 @@ require_once(__DIR__ . "/../../scripts/auth.php");
     <script type="text/javascript">
         var myvar='<?php echo $_SESSION['usuario'];?>';
     </script>
-    <script src="script/script.js"></script>
-    <script src="../../src/SideBar/sidebar.js"></script>
+    <script type="module" src="script/script.js"></script>
+    <script type="module" src="../../src/SideBar/sidebar.js"></script>
 </body>
 
 </html>

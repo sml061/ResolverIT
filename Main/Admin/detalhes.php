@@ -41,7 +41,7 @@ $Usuario = $_SESSION['usuario']
         var myvar = '<?php echo $_SESSION['usuario']; ?>';
         var idcall = '<?php echo $_GET['id'] ?>'
     </script>
-    <script src="script/detalhes.js"></script>
+    <script type="module" src="script/detalhes.js"></script>
 </body>
 
 </html>

@@ -66,13 +66,13 @@ if (!$_GET['p']) {
             </thead>
             <tbody id="tablesBody">
             </tbody>
-            <span id="ReloadCalls">🔄</span>
+            <span id="ReloadCalls" class="emoji">🔄</span>
         </table>
         <script type="text/javascript">
             var myvar = '<?php echo $_SESSION['usuario']; ?>';
         </script>
-        <script src="script/List.js"></script>
-        <script src="../../src/SideBar/sidebar.js"></script>
+        <script type="module" src="script/List.js"></script>
+        <script type="module" src="../../src/SideBar/sidebar.js"></script>
     </body>
 
 <?php else: ?>
