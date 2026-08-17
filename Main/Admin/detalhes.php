@@ -5,10 +5,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once(__DIR__ . "/../../scripts/auth.php");
+require_once(__DIR__ . "/../../scripts/auth_admin.php");
 
 $ID = $_GET['id'];
+$Usuario = $_SESSION['usuario']
 
-?>
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +31,17 @@ $ID = $_GET['id'];
         <h3 id="Observacao">Observação</h3>
         <p id="Mensagem">Mensagem</p>
         <br>
-        <a class="btn btn-secundary" href="./">Voltar</a>
+        <div class="buttons">
+            <a class="btn btn-secundary" href="./">Voltar</a>
+            <button type="button" id="btn-assumir" class="btn btn-assumir">Assumir</button>
+        </div>
     </div>
 
-    <script src="script/detalhes.js"></script>
+    <script type="text/javascript">
+        var myvar = '<?php echo $_SESSION['usuario']; ?>';
+        var idcall = '<?php echo $_GET['id'] ?>'
+    </script>
+    <script type="module" src="script/detalhes.js"></script>
 </body>
 
 </html>

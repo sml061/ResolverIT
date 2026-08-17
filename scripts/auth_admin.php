@@ -18,6 +18,6 @@ $stmt->closeCursor();
 $IsAdmin = $user["is_admin"];
 
 if ($IsAdmin != 1) {
-    header("Location: /SpreadsheetManager/DashBoard/");
+    header("Location: /ResolveIT/Main/CriarCalls/");
     exit();
 }

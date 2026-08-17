@@ -35,7 +35,7 @@
         $_SESSION["usuario"] = $user["usuario"];
         $_SESSION["is_admin"] = $user["is_admin"];
 
-        header("Location: ../Main/VerCalls/");
+        header("Location: ../Main/CriarCalls/");
         exit();
     }
 

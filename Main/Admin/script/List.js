@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.15.111:3000";
+import { API_URL } from "../../../src/Api/Api_Address.js";
 const ReloadCall = document.getElementById("ReloadCalls");
 
 async function LoadCalls() {
@@ -11,6 +11,7 @@ async function LoadCalls() {
 }
 
 async function CarregarTR() {
+    LimparTR();
     const listaTabelasElement = document.getElementById("tablesBody");
 
     const chamados = await LoadCalls();
@@ -56,8 +57,11 @@ async function LimparTR() {
 }
 
 ReloadCall.addEventListener("click", function () {
-    LimparTR();
     CarregarTR();
 });
+
+setTimeout(() => {
+    CarregarTR()
+}, 30000)
 
 CarregarTR();

@@ -5,6 +5,7 @@
 }
 
 body {
+    font-family: "SuaFonte", "Noto Color Emoji", sans-serif;
     font-family: Arial, Helvetica, sans-serif;
     background: #f4f6f9;
     color: #333;
@@ -13,6 +14,14 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 30px;
+}
+
+.emoji {
+    font-family:
+        "Noto Color Emoji",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        sans-serif;
 }
 
 .btn {
@@ -58,6 +67,34 @@ body {
 }
 
 .btn-secundary:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, .25);
+    outline-offset: 2px;
+}
+
+.btn-assumir {
+    background: #ffffff;
+    color: #25eb25;
+
+    border: 2px solid #25eb25;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+}
+
+.btn-assumir:hover {
+    background: #25eb25;
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 16px rgba(37, 99, 235, .25);
+}
+
+.btn-assumir:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+}
+
+.btn-assumir:focus-visible {
     outline: 3px solid rgba(37, 99, 235, .25);
     outline-offset: 2px;
 }
